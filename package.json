@@ -1,0 +1,38 @@
+{
+  "name": "srh-helper",
+  "version": "1.0.0",
+  "description": "A Discord bot designed to help ease the process of sharing assets in the Sonic Ripping Hub.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barelyaiden/srh-helper.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "discord.js",
+    "djs",
+    "sonic-ripping-hub",
+    "srh",
+    "srh-helper",
+    "barelyaiden"
+  ],
+  "author": "barelyaiden",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/barelyaiden/srh-helper/issues"
+  },
+  "homepage": "https://github.com/barelyaiden/srh-helper#readme",
+  "dependencies": {
+    "@discordjs/builders": "^0.6.0",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "discord-api-types": "^0.22.0",
+    "discord.js": "^13.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0"
+  }
+}
