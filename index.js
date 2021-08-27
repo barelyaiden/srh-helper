@@ -1,8 +1,11 @@
 const { Client, Collection, Intents } = require('discord.js');
 const { token } = require('./token.json');
 const fs = require('fs');
+const config = require('./config.json');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+
+client.config = config;
 
 client.commands = new Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));

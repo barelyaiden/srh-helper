@@ -1,7 +1,12 @@
 {
     "bot": {
         "user": {
-            "clientId": "880483339994292264"
+            "clientId": "880483339994292264",
+            "presence": {
+                "status": "dnd",
+                "type": "PLAYING",
+                "name": "Sonic and the Black Knight"
+            }
         }
     }
 }
