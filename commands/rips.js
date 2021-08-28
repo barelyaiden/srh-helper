@@ -2,11 +2,11 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('share')
-        .setDescription('Share a ripped asset from a Sonic game.')
+        .setName('rips')
+        .setDescription('Get a list of ripped assets by other members.')
         .addStringOption(option => 
             option.setName('game')
-                .setDescription('The game the ripped asset belongs to.')
+                .setDescription('The game you want an asset from.')
                 .addChoice('Sonic Adventure Series', 'sonic_adventure')
                 .addChoice('Sonic Heroes', 'sonic_heroes')
                 .addChoice('Shadow The Hedgehog', 'shadow_05')
@@ -35,31 +35,21 @@ module.exports = {
                 .addChoice('Audio', 'audio')
                 .addChoice('HUD', 'hud')
                 .addChoice('Miscellaneous', 'misc')
-                .setRequired(true))
-        .addStringOption(option =>
-            option.setName('name')
-                .setDescription('The name of the ripped asset.')
-                .setRequired(true))
-        .addStringOption(option =>
-            option.setName('link')
-                .setDescription('The download link of the ripped asset.')
                 .setRequired(true)),
     async execute(interaction) {
         const game = interaction.options.getString('game');
         const category = interaction.options.getString('category');
-        const name = interaction.options.getString('name');
-        const link = interaction.options.getString('link');
 
-        if (!link.startsWith('https')) return await interaction.reply({ content: 'Please input a valid download link.', ephemeral: true });
+        const { count, rows } = await interaction.client.Rips.findAndCountAll({ where: { game: game, category: category } });
 
-        await interaction.client.Rips.create({
-            game: game,
-            category: category,
-            author: interaction.user.tag,
-            name: name,
-            link: link
+        if (count < 1) return await interaction.reply({ content: 'There are no available ripped assets for that query.', ephemeral: true });
+
+        let rips = '';
+
+        rows.forEach(function(row) {
+            rips += `${row.id}. [${row.name}](${row.link})\nBy: ${row.author}`;
         });
 
-        return await interaction.reply('Successfully submitted the ripped asset!');
+        return await interaction.reply(rips);
     },
 };
