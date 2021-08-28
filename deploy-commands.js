@@ -1,8 +1,8 @@
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
-const { token } = require('./token.json');
 const fs = require('fs');
 const config = require('./config.json');
+const { token } = require('./token.json');
 
 const commands = [];
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -19,7 +19,7 @@ const rest = new REST({ version: '9' }).setToken(token);
         console.log('Started refreshing application (/) commands.');
 
         await rest.put(
-            Routes.applicationCommands(config.bot.user.clientId),
+            Routes.applicationCommands(config.bot.clientId),
             { body: commands },
         );
         
