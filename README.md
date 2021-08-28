@@ -9,6 +9,8 @@ If you would like to join any of the servers associated with the project, Discor
 # Additional Information
 
 - This bot is written in `Discord.js 13` and requires `Node.js 16.6.0` or higher to run as per `Discord.js 13` requirements.
+- You will need to install build tools if you haven't already to be able to install some dependencies that require to be compiled.
+- **For Windows systems you can use this tutorial to install it: [TUTORIAL](https://www.youtube.com/watch?v=P4_R34Lb-PE)**
 - All commands are global slash commands and require to be deployed via a separate script (for now).
 - **Keep in mind it takes one hour to register any changes if you deploy again to update existing slash commands.**
 - **For this reason make sure to use the `deploy-guild-commands.js` script as updating slash commands in a guild is faster, especially for rapid testing.**
