@@ -10,6 +10,8 @@ If you would like to join any of the servers associated with the project, Discor
 
 - This bot is written in `Discord.js 13` and requires `Node.js 16.6.0` or higher to run as per `Discord.js 13` requirements.
 - All commands are global slash commands and require to be deployed via a separate script (for now).
+- **Keep in mind it takes one hour to register any changes if you deploy again to update existing slash commands.**
+- **For this reason make sure to use the `deploy-guild-commands.js` script as updating slash commands in a guild is faster, especially for rapid testing.**
 - This bot is designed for the `Sonic Ripping Hub` Discord server and is **not** meant to work on other servers.
 - You **must** have a decent grasp of JavaScript, Node.js and Discord.js to be able to contribute to the project.
 - Your test bot account **must** have all privileged gateway intents enabled to function properly.
@@ -32,5 +34,10 @@ If you would like to join any of the servers associated with the project, Discor
 ```
 - **Make sure to replace `insertYourTestBotTokenHere` with your own test bot account's token.**
 - **Do not share your test bot account's token as that will allow others to run their own (and very likely malicious) code on your test bot account.**
-4. To deploy commands run the deployment script by using the `node deploy-commands.js` command in your terminal and let it finish.
-5. To start the bot use the `node .` command in your terminal (and stop the bot by using `Ctrl + C` inside your terminal).
+4. Modify the `config.json` file with your own client and guild IDs.
+5. To deploy commands:
+- For rapid testing run the `node deploy-guild-commands.js` command in your terminal.
+- **THIS WILL REGISTER YOUR COMMANDS ONLY IN YOUR TESTING SERVER, THE ID OF WHICH YOU WILL HAVE TO PROVIDE IN THE CONFIGURATION FILE.**
+- For registering commands globally run the `deploy-global-commands.js` command in your terminal.
+- **THIS WILL ALLOW YOUR COMMANDS TO BE RUN ON ANY SERVER THE BOT IS IN.**
+6. To start the bot use the `node .` command in your terminal (and stop the bot by using `Ctrl + C` inside your terminal).

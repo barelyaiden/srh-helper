@@ -1,11 +1,25 @@
 const { Client, Collection, Intents } = require('discord.js');
+const { Sequelize, DataTypes } = require('sequelize');
 const fs = require('fs');
 const config = require('./config.json');
 const { token } = require('./token.json');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
+const sequelizeRips = new Sequelize({
+    dialect: 'sqlite',
+    logging: false,
+    storage: './databases/rips.sqlite'
+});
+
 client.config = config;
+client.Rips = sequelizeRips.define('Rips', {
+    game: DataTypes.TEXT,
+    category: DataTypes.TEXT,
+    author: DataTypes.TEXT,
+    name: DataTypes.TEXT,
+    link: DataTypes.TEXT
+});
 
 client.commands = new Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
