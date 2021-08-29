@@ -4,5 +4,11 @@
     },
     "testingGuild": {
         "guildId": "880462579221278820"
+    },
+    "colors": {
+        "redColor": "ff0002"
+    },
+    "assets": {
+        "avatar": "https://cdn.discordapp.com/attachments/880464361175547935/881488607435706378/avatar.png"
     }
 }

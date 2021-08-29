@@ -1,3 +1,5 @@
+const { MessageEmbed } = require('discord.js');
+
 module.exports = {
     name: 'interactionCreate',
     async execute(interaction) {
@@ -11,7 +13,13 @@ module.exports = {
             await command.execute(interaction);
         } catch (error) {
             console.error(error);
-            await interaction.reply({ content: 'There was an error while executing this command.', ephemeral: true });
+
+            const errorEmbed = new MessageEmbed()
+                .setColor(interaction.client.config.colors.redColor)
+                .setAuthor('There was an error while executing this command.', interaction.client.config.assets.avatar)
+                .setDescription(`\`\`\`- ${error.message}\`\`\``);
+
+            await interaction.reply({ embeds: [errorEmbed], ephemeral: true });
         }
     },
 };

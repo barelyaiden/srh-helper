@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -6,12 +7,13 @@ module.exports = {
         .setDescription('Get a list of ripped assets by other members.')
         .addStringOption(option => 
             option.setName('game')
-                .setDescription('The game you want an asset from.')
+                .setDescription('The game you want a ripped asset from.')
                 .addChoice('Sonic Adventure Series', 'sonic_adventure')
                 .addChoice('Sonic Heroes', 'sonic_heroes')
                 .addChoice('Shadow The Hedgehog', 'shadow_05')
                 .addChoice('Sonic The Hedgehog (2006)', 'sonic_06')
                 .addChoice('Sonic Unleashed', 'sonic_unleashed')
+                .addChoice('Sonic The Hedgehog 4 Series', 'sonic_4')
                 .addChoice('Sonic Colors', 'sonic_colors')
                 .addChoice('Sonic Generations', 'sonic_generations')
                 .addChoice('Sonic Lost World', 'sonic_lost_world')
@@ -40,16 +42,25 @@ module.exports = {
         const game = interaction.options.getString('game');
         const category = interaction.options.getString('category');
 
-        const { count, rows } = await interaction.client.Rips.findAndCountAll({ where: { game: game, category: category } });
+        const { count, rows } = await interaction.client.RippedAssets.findAndCountAll({ where: { game: game, category: category } });
 
-        if (count < 1) return await interaction.reply({ content: 'There are no available ripped assets for that query.', ephemeral: true });
+        const noRippedAssetsEmbed = new MessageEmbed()
+            .setColor(interaction.client.config.colors.redColor)
+            .setAuthor('There are no ripped assets for your query.', interaction.client.config.assets.avatar);
 
-        let rips = '';
+        if (count < 1) return await interaction.reply({ embeds: [noRippedAssetsEmbed], ephemeral: true });
+
+        let rippedAssets = '';
 
         rows.forEach(function(row) {
-            rips += `${row.id}. [${row.name}](${row.link})\nBy: ${row.author}`;
+            rippedAssets += `**${row.id}.** [${row.name}](${row.link})\n**By:** ${row.author}\n`;
         });
 
-        return await interaction.reply(rips);
+        const rippedAssetsEmbed = new MessageEmbed()
+            .setColor(interaction.client.config.colors.redColor)
+            .setAuthor('All available ripped assets for your query.', interaction.client.config.assets.avatar)
+            .setDescription(rippedAssets);
+
+        return await interaction.reply({ embeds: [rippedAssetsEmbed] });
     },
 };

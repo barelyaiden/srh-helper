@@ -6,14 +6,14 @@ const { token } = require('./token.json');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
-const sequelizeRips = new Sequelize({
+const sequelizeRippedAssets = new Sequelize({
     dialect: 'sqlite',
     logging: false,
-    storage: './databases/rips.sqlite'
+    storage: './databases/rippedAssets.sqlite'
 });
 
 client.config = config;
-client.Rips = sequelizeRips.define('Rips', {
+client.RippedAssets = sequelizeRippedAssets.define('RippedAssets', {
     game: DataTypes.TEXT,
     category: DataTypes.TEXT,
     author: DataTypes.TEXT,

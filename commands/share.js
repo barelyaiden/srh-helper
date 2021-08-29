@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -12,6 +13,7 @@ module.exports = {
                 .addChoice('Shadow The Hedgehog', 'shadow_05')
                 .addChoice('Sonic The Hedgehog (2006)', 'sonic_06')
                 .addChoice('Sonic Unleashed', 'sonic_unleashed')
+                .addChoice('Sonic The Hedgehog 4 Series', 'sonic_4')
                 .addChoice('Sonic Colors', 'sonic_colors')
                 .addChoice('Sonic Generations', 'sonic_generations')
                 .addChoice('Sonic Lost World', 'sonic_lost_world')
@@ -50,9 +52,13 @@ module.exports = {
         const name = interaction.options.getString('name');
         const link = interaction.options.getString('link');
 
-        if (!link.startsWith('https')) return await interaction.reply({ content: 'Please input a valid download link.', ephemeral: true });
+        const invalidDownloadLinkEmbed = new MessageEmbed()
+            .setColor(interaction.client.config.colors.redColor)
+            .setAuthor('Please input a valid download link.', interaction.client.config.assets.avatar);
 
-        await interaction.client.Rips.create({
+        if (!link.startsWith('https')) return await interaction.reply({ embeds: [invalidDownloadLinkEmbed], ephemeral: true });
+
+        await interaction.client.RippedAssets.create({
             game: game,
             category: category,
             author: interaction.user.tag,
@@ -60,6 +66,10 @@ module.exports = {
             link: link
         });
 
-        return await interaction.reply('Successfully submitted the ripped asset!');
+        const successEmbed = new MessageEmbed()
+            .setColor(interaction.client.config.colors.redColor)
+            .setAuthor('Successfully submitted your ripped asset!', interaction.client.config.assets.avatar);
+
+        return await interaction.reply({ embeds: [successEmbed] });
     },
 };
