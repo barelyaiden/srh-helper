@@ -5,6 +5,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('share')
         .setDescription('Share a ripped asset from a Sonic game.')
+        .setDefaultPermission(false)
         .addStringOption(option => 
             option.setName('game')
                 .setDescription('The game the ripped asset belongs to.')

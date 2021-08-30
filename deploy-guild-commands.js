@@ -19,7 +19,7 @@ const rest = new REST({ version: '9' }).setToken(token);
         console.log('Started refreshing application (/) commands.');
 
         await rest.put(
-            Routes.applicationGuildCommands(config.bot.clientId, config.testingGuild.guildId),
+            Routes.applicationGuildCommands(config.bot.clientId, config.guild.guildId),
             { body: commands },
         );
         
