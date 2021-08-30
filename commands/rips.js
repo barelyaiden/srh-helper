@@ -16,6 +16,7 @@ module.exports = {
                 .addChoice('Sonic The Hedgehog 4 Series', 'sonic_4')
                 .addChoice('Sonic Colors', 'sonic_colors')
                 .addChoice('Sonic Generations', 'sonic_generations')
+                .addChoice('Sonic Boom', 'sonic_boom')
                 .addChoice('Sonic Lost World', 'sonic_lost_world')
                 .addChoice('Sonic Forces', 'sonic_forces')
                 .addChoice('Sonic and the Secret Rings', 'sonic_rings')

@@ -36,7 +36,7 @@ If you would like to join any of the servers associated with the project, Discor
 ```
 - **MAKE SURE TO REPLACE `insertYourTestBotTokenHere` WITH YOUR OWN TEST BOT ACCOUNT'S TOKEN.**
 - **DO NOT SHARE YOUR TEST BOT ACCOUNT'S TOKEN AS THAT WILL ALLOW OTHERS TO RUN THEIR OWN (AND VERY LIKELY MALICIOUS) CODE ON YOUR TEST BOT ACCOUNT.**
-4. Modify the `config.json` file with your own client and guild IDs.
+4. Modify the `config.json` file with your own IDs and role names.
 5. To deploy commands:
 - For rapid testing run the `node deploy-guild-commands.js` command in your terminal.
 - **THIS WILL REGISTER YOUR COMMANDS ONLY IN YOUR TESTING SERVER, THE ID OF WHICH YOU WILL HAVE TO PROVIDE IN THE CONFIGURATION FILE.**
