@@ -9,6 +9,7 @@ module.exports = {
         .addStringOption(option => 
             option.setName('game')
                 .setDescription('The game the ripped asset belongs to.')
+                .addChoice('Sonic R', 'sonic_r')
                 .addChoice('Sonic Adventure Series', 'sonic_adventure')
                 .addChoice('Sonic Heroes', 'sonic_heroes')
                 .addChoice('Shadow The Hedgehog', 'shadow_05')
@@ -18,6 +19,7 @@ module.exports = {
                 .addChoice('Sonic Colors', 'sonic_colors')
                 .addChoice('Sonic Generations', 'sonic_generations')
                 .addChoice('Sonic Boom', 'sonic_boom')
+                .addChoice('Sonic Mobile Games', 'sonic_mobile')
                 .addChoice('Sonic Lost World', 'sonic_lost_world')
                 .addChoice('Sonic Forces', 'sonic_forces')
                 .addChoice('Sonic and the Secret Rings', 'sonic_rings')
