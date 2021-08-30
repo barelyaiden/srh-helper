@@ -46,7 +46,7 @@ module.exports = {
 
         const noRippedAssetsEmbed = new MessageEmbed()
             .setColor(interaction.client.config.colors.redColor)
-            .setAuthor('There are no ripped assets for your query.', interaction.client.config.assets.avatar);
+            .setAuthor('There are no ripped assets in the database for your query.', interaction.client.config.assets.avatar);
 
         if (count < 1) return await interaction.reply({ embeds: [noRippedAssetsEmbed], ephemeral: true });
 

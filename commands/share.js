@@ -55,7 +55,7 @@ module.exports = {
 
         const invalidDownloadLinkEmbed = new MessageEmbed()
             .setColor(interaction.client.config.colors.redColor)
-            .setAuthor('Please input a valid download link.', interaction.client.config.assets.avatar);
+            .setAuthor('Please input a valid download link for your ripped asset.', interaction.client.config.assets.avatar);
 
         if (!link.startsWith('https')) return await interaction.reply({ embeds: [invalidDownloadLinkEmbed], ephemeral: true });
 
@@ -69,7 +69,7 @@ module.exports = {
 
         const successEmbed = new MessageEmbed()
             .setColor(interaction.client.config.colors.redColor)
-            .setAuthor('Successfully submitted your ripped asset!', interaction.client.config.assets.avatar);
+            .setAuthor('Successfully submitted your ripped asset to the database!', interaction.client.config.assets.avatar);
 
         return await interaction.reply({ embeds: [successEmbed] });
     },
