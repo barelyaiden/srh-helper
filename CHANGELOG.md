@@ -1,3 +1,7 @@
+## Release 1.1.0
+
+- Added pages to the "Rips" command.
+
 ## Release 1.0.1
 
 - Added version indicator to the "Library" field in the "About" embed.
