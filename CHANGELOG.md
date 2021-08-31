@@ -1,6 +1,7 @@
 ## Release 1.1.0
 
 - Added pages to the "Rips" command.
+- Added "Usage" command.
 
 ## Release 1.0.1
 
