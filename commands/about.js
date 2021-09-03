@@ -70,5 +70,9 @@ module.exports = {
                 await i.update({ embeds: [specialThanksEmbed] });
             }
         });
+
+        setTimeout(async function() {
+            await interaction.editReply({ components: [] });
+        }, 15000);
     },
 };

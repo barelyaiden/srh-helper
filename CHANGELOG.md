@@ -1,3 +1,9 @@
+## Release 1.1.1
+
+- Renamed "Sonic Colors" to "Sonic Colors Series" in the games options lists.
+- Buttons now disappear after they get inactive.
+- Arrow buttons now have consistent design between platforms.
+
 ## Release 1.1.0
 
 - Added pages to the "Rips" command.

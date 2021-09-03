@@ -15,7 +15,7 @@ module.exports = {
                 .addChoice('Sonic The Hedgehog (2006)', 'sonic_06')
                 .addChoice('Sonic Unleashed', 'sonic_unleashed')
                 .addChoice('Sonic The Hedgehog 4 Series', 'sonic_4')
-                .addChoice('Sonic Colors', 'sonic_colors')
+                .addChoice('Sonic Colors Series', 'sonic_colors')
                 .addChoice('Sonic Generations', 'sonic_generations')
                 .addChoice('Sonic Boom', 'sonic_boom')
                 .addChoice('Sonic Mobile Games', 'sonic_mobile')
@@ -46,12 +46,12 @@ module.exports = {
             .addComponents(
                 new MessageButton()
                     .setCustomId('left')
-                    .setLabel('◀')
-                    .setStyle('PRIMARY'),
+                    .setStyle('PRIMARY')
+                    .setEmoji(interaction.client.config.emojis.leftArrowEmojiId),
                 new MessageButton()
                     .setCustomId('right')
-                    .setLabel('▶')
-                    .setStyle('PRIMARY'),
+                    .setStyle('PRIMARY')
+                    .setEmoji(interaction.client.config.emojis.rightArrowEmojiId),
             );
 
         const game = interaction.options.getString('game');
@@ -72,11 +72,15 @@ module.exports = {
             await interaction.reply({ embeds: [embeds[currentPage]] });
         } else {
             await interaction.reply({content: `**Page:** ${currentPage+1}/${embeds.length}`, embeds: [embeds[currentPage]], components: [row] });
+
+            setTimeout(async function() {
+                await interaction.editReply({ components: [] });
+            }, 15000);
         }
 
         const filter = i => i.user.id === interaction.user.id;
 
-        const collector = interaction.channel.createMessageComponentCollector({ filter, time: 30000 });
+        const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
 
         collector.on('collect', async i => {
             if (i.customId === 'left') {

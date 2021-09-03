@@ -14,6 +14,10 @@
         "moderationRoleId": "881492567320068106",
         "moderationRoleName": "Moderation"
     },
+    "emojis": {
+        "leftArrowEmojiId": "883343061495730207",
+        "rightArrowEmojiId": "883343061617344542"
+    },
     "colors": {
         "redColor": "ff0002",
         "greenColor": "00ff0d",

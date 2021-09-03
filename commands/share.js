@@ -16,7 +16,7 @@ module.exports = {
                 .addChoice('Sonic The Hedgehog (2006)', 'sonic_06')
                 .addChoice('Sonic Unleashed', 'sonic_unleashed')
                 .addChoice('Sonic The Hedgehog 4 Series', 'sonic_4')
-                .addChoice('Sonic Colors', 'sonic_colors')
+                .addChoice('Sonic Colors Series', 'sonic_colors')
                 .addChoice('Sonic Generations', 'sonic_generations')
                 .addChoice('Sonic Boom', 'sonic_boom')
                 .addChoice('Sonic Mobile Games', 'sonic_mobile')
