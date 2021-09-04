@@ -14,14 +14,19 @@
         "moderationRoleId": "881492567320068106",
         "moderationRoleName": "Moderation"
     },
-    "emojis": {
-        "leftArrowEmojiId": "883343061495730207",
-        "rightArrowEmojiId": "883343061617344542"
-    },
     "colors": {
         "redColor": "ff0002",
         "greenColor": "00ff0d",
         "whiteColor": "ffffff"
+    },
+    "emojis": {
+        "leftArrowEmojiId": "883343061495730207",
+        "rightArrowEmojiId": "883343061617344542"
+    },
+    "usageGifs": {
+        "deleteUsageGif": "https://cdn.discordapp.com/attachments/880464361175547935/882194488511057951/zVxroTpeFv.gif",
+        "ripsUsageGif": "https://cdn.discordapp.com/attachments/880464361175547935/882194849464451072/VLbfLar3PE.gif",
+        "shareUsageGif": "https://cdn.discordapp.com/attachments/880464361175547935/882195442006380564/919DIf9lIW.gif"
     },
     "assets": {
         "avatar": "https://cdn.discordapp.com/attachments/880464361175547935/881488607435706378/avatar.png",

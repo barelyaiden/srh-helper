@@ -1,6 +1,6 @@
 {
   "name": "srh-helper",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A Discord bot designed to help ease the process of sharing ripped assets in the Sonic Ripping Hub Discord server.",
   "main": "index.js",
   "scripts": {

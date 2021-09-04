@@ -1,3 +1,10 @@
+## Release 1.1.2
+
+- Improved the description of the "GitHub" page on the "About" command.
+- The bot now sends usage GIFs as attachments rather than sending links.
+- The current page of multiple embeds is now shown on the embed footer rather than as plain text above the embed.
+- Restructured the configuration file.
+
 ## Release 1.1.1
 
 - Renamed "Sonic Colors" to "Sonic Colors Series" in the games options lists.

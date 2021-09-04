@@ -37,7 +37,7 @@ module.exports = {
         const gitHubEmbed = new MessageEmbed()
             .setColor(interaction.client.config.colors.whiteColor)
             .setAuthor('GitHub Repository', interaction.client.config.assets.gitHubLogo)
-            .setDescription('If you would like to contribute to the project, report bugs or share suggestions, you can do so on the:\n\n**[Official GitHub Repository](https://github.com/barelyaiden/srh-helper)**')
+            .setDescription('If you would like to contribute to the project, report bugs or share suggestions, you can do so on the **[official GitHub repository](https://github.com/barelyaiden/srh-helper)**.')
             .setImage(interaction.client.config.assets.whiteBanner);
 
         const credits = [

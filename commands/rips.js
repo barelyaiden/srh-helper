@@ -71,7 +71,9 @@ module.exports = {
         if (embeds.length < 2) {
             await interaction.reply({ embeds: [embeds[currentPage]] });
         } else {
-            await interaction.reply({content: `**Page:** ${currentPage+1}/${embeds.length}`, embeds: [embeds[currentPage]], components: [row] });
+            await embeds[currentPage].setFooter(`Page: ${currentPage+1}/${embeds.length}`);
+
+            await interaction.reply({ embeds: [embeds[currentPage]], components: [row] });
 
             setTimeout(async function() {
                 await interaction.editReply({ components: [] });
@@ -86,12 +88,13 @@ module.exports = {
             if (i.customId === 'left') {
                 if (currentPage !== 0) {
                     --currentPage;
-                    await i.update({content: `**Page:** ${currentPage+1}/${embeds.length}`, embeds: [embeds[currentPage]] });
+                    await i.update({ embeds: [embeds[currentPage]] });
                 }
             } else if (i.customId === 'right') {
                 if (currentPage < embeds.length-1) {
                     currentPage++;
-                    await i.update({content: `**Page:** ${currentPage+1}/${embeds.length}`, embeds: [embeds[currentPage]] });
+                    await embeds[currentPage].setFooter(`Page: ${currentPage+1}/${embeds.length}`);
+                    await i.update({ embeds: [embeds[currentPage]] });
                 }
             }
         });
