@@ -1,6 +1,7 @@
 databases/*
 !databases/.gitkeep
 !databases/rippedAssets30-8-21.sqlite
+!databases/rippedAssets8-4-22.sqlite
 node_modules
 package-lock.json
 token.json
