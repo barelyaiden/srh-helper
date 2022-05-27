@@ -17,14 +17,15 @@ module.exports = {
 
         const noRippedAssetEmbed = new MessageEmbed()
             .setColor(interaction.client.config.colors.redColor)
-            .setAuthor('That ripped asset entry does not exist.', interaction.client.config.assets.avatar);
+            .setAuthor({ name: 'That ripped asset entry does not exist.', iconURL: interaction.client.config.assets.avatar })
+            .addField('Entry Id:', `${entryId}`);
 
         if (!row) return await interaction.reply({ embeds: [noRippedAssetEmbed], ephemeral: true });
 
         if (!interaction.member.roles.cache.some(role => role.name === interaction.client.config.roles.moderationRoleName)) {
             const noPermissionEmbed = new MessageEmbed()
                 .setColor(interaction.client.config.colors.redColor)
-                .setAuthor('You do not have permission to delete that ripped asset entry from the database.', interaction.client.config.assets.avatar);
+                .setAuthor({ name: 'You do not have permission to delete that ripped asset entry from the database.', iconURL: interaction.client.config.assets.avatar });
 
             if (interaction.user.tag !== row.author) return await interaction.reply({ embeds: [noPermissionEmbed], ephemeral: true });
         }
@@ -33,7 +34,8 @@ module.exports = {
 
         const successEmbed = new MessageEmbed()
             .setColor(interaction.client.config.colors.redColor)
-            .setAuthor('Successfully deleted ripped asset from the database.', interaction.client.config.assets.avatar);
+            .setAuthor({ name: 'Successfully deleted the ripped asset from the database.', iconURL: interaction.client.config.assets.avatar })
+            .addField('Entry Id:', `${entryId}`);
 
         return await interaction.reply({ embeds: [successEmbed], ephemeral: true });
     },

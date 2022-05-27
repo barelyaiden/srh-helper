@@ -9,38 +9,42 @@ module.exports = {
         .addStringOption(option => 
             option.setName('game')
                 .setDescription('The game the ripped asset belongs to.')
-                .addChoice('Sonic R', 'sonic_r')
-                .addChoice('Sonic Adventure Series', 'sonic_adventure')
-                .addChoice('Sonic Heroes', 'sonic_heroes')
-                .addChoice('Shadow The Hedgehog', 'shadow_05')
-                .addChoice('Sonic The Hedgehog (2006)', 'sonic_06')
-                .addChoice('Sonic Unleashed', 'sonic_unleashed')
-                .addChoice('Sonic The Hedgehog 4 Series', 'sonic_4')
-                .addChoice('Sonic Colors Series', 'sonic_colors')
-                .addChoice('Sonic Generations', 'sonic_generations')
-                .addChoice('Sonic Boom', 'sonic_boom')
-                .addChoice('Sonic Mobile Games', 'sonic_mobile')
-                .addChoice('Sonic Lost World', 'sonic_lost_world')
-                .addChoice('Sonic Forces', 'sonic_forces')
-                .addChoice('Sonic and the Secret Rings', 'sonic_rings')
-                .addChoice('Sonic and the Black Knight', 'sonic_knight')
-                .addChoice('Sonic Rush Series', 'sonic_rush')
-                .addChoice('Sonic Riders Series', 'sonic_riders')
-                .addChoice('Team Sonic Racing', 'team_sonic_racing')
-                .addChoice('Mario & Sonic at the Olympic Games Series', 'olympics')
+                .addChoices(
+                    { name: 'Sonic R', value: 'sonic_r' },
+                    { name: 'Sonic Adventure Series', value: 'sonic_adventure' },
+                    { name: 'Sonic Heroes', value: 'sonic_heroes' },
+                    { name: 'Shadow The Hedgehog', value: 'shadow_05' },
+                    { name: 'Sonic The Hedgehog (2006)', value: 'sonic_06' },
+                    { name: 'Sonic Unleashed', value: 'sonic_unleashed' },
+                    { name: 'Sonic The Hedgehog 4 Series', value: 'sonic_4' },
+                    { name: 'Sonic Colors Series', value: 'sonic_colors' },
+                    { name: 'Sonic Generations', value: 'sonic_generations' },
+                    { name: 'Sonic Boom', value: 'sonic_boom' },
+                    { name: 'Sonic Mobile Games', value: 'sonic_mobile' },
+                    { name: 'Sonic Lost World', value: 'sonic_lost_world' },
+                    { name: 'Sonic Forces', value: 'sonic_forces' },
+                    { name: 'Sonic and the Secret Rings', value: 'sonic_rings' },
+                    { name: 'Sonic and the Black Knight', value: 'sonic_knight' },
+                    { name: 'Sonic Rush Series', value: 'sonic_rush' },
+                    { name: 'Sonic Riders Series', value: 'sonic_riders' },
+                    { name: 'Team Sonic Racing', value: 'team_sonic_racing' },
+                    { name: 'Mario & Sonic at the Olympic Games Series', value: 'olympics' },
+                )
                 .setRequired(true))
         .addStringOption(option =>
             option.setName('category')
                 .setDescription('The category the ripped asset belongs to.')
-                .addChoice('Character', 'character')
-                .addChoice('Boss', 'boss')
-                .addChoice('Enemy', 'enemy')
-                .addChoice('Vehicle', 'vehicle')
-                .addChoice('Stage', 'stage')
-                .addChoice('Video', 'video')
-                .addChoice('Audio', 'audio')
-                .addChoice('HUD', 'hud')
-                .addChoice('Miscellaneous', 'misc')
+                .addChoices(
+                    { name: 'Character', value: 'character' },
+                    { name: 'Boss', value: 'boss' },
+                    { name: 'Enemy', value: 'enemy' },
+                    { name: 'Vehicle', value: 'vehicle' },
+                    { name: 'Stage', value: 'stage' },
+                    { name: 'Video', value: 'video' },
+                    { name: 'Audio', value: 'audio' },
+                    { name: 'HUD', value: 'hud' },
+                    { name: 'Miscellaneous', value: 'misc' },
+                )
                 .setRequired(true))
         .addStringOption(option =>
             option.setName('name')
@@ -58,7 +62,7 @@ module.exports = {
 
         const invalidDownloadLinkEmbed = new MessageEmbed()
             .setColor(interaction.client.config.colors.redColor)
-            .setAuthor('Please input a valid download link for your ripped asset.', interaction.client.config.assets.avatar);
+            .setAuthor({ name: 'Please input a valid download link for your ripped asset.', iconURL: interaction.client.config.assets.avatar });
 
         if (!link.startsWith('https')) return await interaction.reply({ embeds: [invalidDownloadLinkEmbed], ephemeral: true });
 
@@ -72,7 +76,13 @@ module.exports = {
 
         const successEmbed = new MessageEmbed()
             .setColor(interaction.client.config.colors.redColor)
-            .setAuthor('Successfully submitted your ripped asset to the database!', interaction.client.config.assets.avatar);
+            .setAuthor({ name: 'Successfully submitted your ripped asset to the database!', iconURL: interaction.client.config.assets.avatar })
+            .addFields(
+                { name: 'Game:', value: game },
+                { name: 'Category:', value: category },
+                { name: 'Name:', value: name },
+                { name: 'Link:', value: link },
+            );
 
         return await interaction.reply({ embeds: [successEmbed] });
     },

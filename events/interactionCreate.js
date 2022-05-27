@@ -16,8 +16,9 @@ module.exports = {
 
             const errorEmbed = new MessageEmbed()
                 .setColor(interaction.client.config.colors.redColor)
-                .setAuthor('There was an error while trying to execute command.', interaction.client.config.assets.avatar)
-                .setDescription(`\`\`\`- ${error.message}\`\`\``);
+                .setAuthor({ name: 'There was an error while trying to execute this command.', iconURL: interaction.client.config.assets.avatar })
+                .setDescription(`\`\`\`- ${error.message}\`\`\``)
+                .setFooter({ text: 'Please contact aiden if you see this error message.' });
 
             await interaction.reply({ embeds: [errorEmbed], ephemeral: true });
         }

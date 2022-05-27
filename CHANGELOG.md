@@ -1,3 +1,18 @@
+## Release 1.2.0
+
+- Updated the dependencies.
+- Updated the README file with more up-to-date information.
+- Updated the `client` object's intents to match the ones on the Bot account set-up page.
+- Deleted the `deploy-global-commands.js` script and renamed the `deploy-guild-commands.js` script to `deploy-commands.js`.
+- Removed the command Ids from the configuration file as setting slash command permissions through bots is not needed anymore.
+- Fixed one of the database backups being ignored when pushing to the repository.
+- Fixed line endings in the `.eslintrc.json` file (switched from Unix to Windows).
+- Updated the `.setAuthor()` and `.setFooter()` functions as they require an object for the argument now.
+- Updated choices in the command files to use the new `.addChoices()` function instead of the deprecated `.addChoice()` one.
+- Removed the code that sets permissions for specific slash commands (this can be done via the server settings in the Discord client now).
+- Commands that interact with the database now publicly show any metadata used.
+- Updated the bot author and special thanks section of the About command.
+
 ## Release 1.1.2
 
 - Improved the description of the "GitHub" page on the "About" command.

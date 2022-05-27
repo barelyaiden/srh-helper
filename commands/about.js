@@ -25,10 +25,10 @@ module.exports = {
 
         const informationEmbed = new MessageEmbed()
             .setColor(interaction.client.config.colors.redColor)
-            .setAuthor('About SRH Helper', interaction.client.config.assets.avatar)
+            .setAuthor({ name: 'About SRH Helper', iconURL: interaction.client.config.assets.avatar })
             .setDescription(package.description)
             .addFields(
-                { name: 'Author:', value: `${package.author}#6219` },
+                { name: 'Author:', value: 'barelyaiden' },
                 { name: 'Version:', value: package.version },
                 { name: 'Library:', value: `Discord.js v${package.dependencies['discord.js'].substring(1)}` }
             )
@@ -36,22 +36,22 @@ module.exports = {
 
         const gitHubEmbed = new MessageEmbed()
             .setColor(interaction.client.config.colors.whiteColor)
-            .setAuthor('GitHub Repository', interaction.client.config.assets.gitHubLogo)
+            .setAuthor({ name: 'GitHub Repository', iconURL: interaction.client.config.assets.gitHubLogo })
             .setDescription('If you would like to contribute to the project, report bugs or share suggestions, you can do so on the **[official GitHub repository](https://github.com/barelyaiden/srh-helper)**.')
             .setImage(interaction.client.config.assets.whiteBanner);
 
         const credits = [
-            '**Kyria!**',
-            'For generously hosting the bot on their own VPS.',
-            '**Devin!**',
+            '**Arsenal**',
+            'For generously hosting the bot for the server.',
+            '**Devin**',
             'For contributing to the project with a License file.',
-            '**The Sonic Ripping Community!**',
+            '**The Sonic Ripping Community**',
             'For sharing so many ripped assets for others to use for their own projects.'
         ].join('\n');
 
         const specialThanksEmbed = new MessageEmbed()
             .setColor(interaction.client.config.colors.greenColor)
-            .setAuthor('Special Thanks', interaction.client.config.assets.greenAvatar)
+            .setAuthor({ name: 'Special Thanks', iconURL: interaction.client.config.assets.greenAvatar })
             .setDescription(credits)
             .setImage(interaction.client.config.assets.greenBanner);
 

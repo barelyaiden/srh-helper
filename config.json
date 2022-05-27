@@ -5,10 +5,6 @@
     "guild": {
         "guildId": "880462579221278820"
     },
-    "commands": {
-        "shareCommandId": "881223871607504917",
-        "deleteCommandId": "881793398992941086"
-    },
     "roles": {
         "rippersRoleId": "881492611641249802",
         "moderationRoleId": "881492567320068106",
