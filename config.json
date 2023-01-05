@@ -1,10 +1,6 @@
 {
-    "bot": {
-        "clientId": "880483339994292264"
-    },
-    "guild": {
-        "guildId": "880462579221278820"
-    },
+    "clientId": "880483339994292264",
+    "guildId": "880462579221278820",
     "roles": {
         "rippersRoleId": "881492611641249802",
         "moderationRoleId": "881492567320068106",
@@ -20,9 +16,9 @@
         "rightArrowEmojiId": "883343061617344542"
     },
     "usageGifs": {
-        "deleteUsageGif": "https://cdn.discordapp.com/attachments/880464361175547935/882194488511057951/zVxroTpeFv.gif",
-        "ripsUsageGif": "https://cdn.discordapp.com/attachments/880464361175547935/882194849464451072/VLbfLar3PE.gif",
-        "shareUsageGif": "https://cdn.discordapp.com/attachments/880464361175547935/882195442006380564/919DIf9lIW.gif"
+        "deleteUsageGif": "https://cdn.discordapp.com/attachments/880464361175547935/1060522833282859088/Discord_NZVEBugLfD.gif",
+        "ripsUsageGif": "https://cdn.discordapp.com/attachments/880464361175547935/1060522192120590426/Discord_hOil7fbamL.gif",
+        "shareUsageGif": "https://cdn.discordapp.com/attachments/880464361175547935/1060521567383207956/Discord_sA1Uzzbq62.gif"
     },
     "assets": {
         "avatar": "https://cdn.discordapp.com/attachments/880464361175547935/881488607435706378/avatar.png",

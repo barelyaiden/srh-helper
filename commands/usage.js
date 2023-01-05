@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder, AttachmentBuilder } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -7,14 +7,15 @@ module.exports = {
         .addStringOption(option => 
             option.setName('command')
                 .setDescription('The command you want to learn how to use.')
+                .setRequired(true)
                 .addChoices(
                     { name: 'Delete', value: 'deleteUsageGif' },
                     { name: 'Rips', value: 'ripsUsageGif' },
                     { name: 'Share', value: 'shareUsageGif' }
-                )
-                .setRequired(true)),
+                )),
     async execute(interaction) {
         const command = interaction.options.getString('command');
-        return await interaction.reply({ files: [interaction.client.config.usageGifs[command]] });
+        const file = new AttachmentBuilder(interaction.client.config.usageGifs[command]);
+        return await interaction.reply({ files: [file] });
     },
 };

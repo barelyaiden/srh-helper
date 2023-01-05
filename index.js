@@ -1,38 +1,48 @@
-const { Client, Collection, Intents } = require('discord.js');
+const fs = require('node:fs');
+const path = require('node:path');
 const { Sequelize, DataTypes } = require('sequelize');
-const fs = require('fs');
+const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const config = require('./config.json');
-const { token } = require('./token.json');
+require('dotenv').config();
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_PRESENCES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGES] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-const sequelizeRippedAssets = new Sequelize({
+const sequelize = new Sequelize({
     dialect: 'sqlite',
     logging: false,
-    storage: './databases/rippedAssets.sqlite'
+    storage: './databases/rippedAssets.sqlite',
 });
 
-client.config = config;
-client.RippedAssets = sequelizeRippedAssets.define('RippedAssets', {
+client.commands = new Collection();
+client.RippedAssets = sequelize.define('RippedAssets', {
     game: DataTypes.TEXT,
     category: DataTypes.TEXT,
     author: DataTypes.TEXT,
     name: DataTypes.TEXT,
     link: DataTypes.TEXT
 });
+client.config = config;
 
-client.commands = new Collection();
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+const commandsPath = path.join(__dirname, 'commands');
+const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
-    const command = require(`./commands/${file}`);
-    client.commands.set(command.data.name, command);
+    const filePath = path.join(commandsPath, file);
+    const command = require(filePath);
+
+    if ('data' in command && 'execute' in command) {
+        client.commands.set(command.data.name, command);
+    } else {
+        console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+    }
 }
 
-const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+const eventsPath = path.join(__dirname, 'events');
+const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 
 for (const file of eventFiles) {
-    const event = require(`./events/${file}`);
+    const filePath = path.join(eventsPath, file);
+    const event = require(filePath);
 
     if (event.once) {
         client.once(event.name, (...args) => event.execute(...args));
@@ -41,4 +51,4 @@ for (const file of eventFiles) {
     }
 }
 
-client.login(token);
+client.login(process.env.DISCORD_TOKEN);

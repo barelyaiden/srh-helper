@@ -1,26 +1,22 @@
-const { MessageEmbed } = require('discord.js');
+const { Events } = require('discord.js');
 
 module.exports = {
-    name: 'interactionCreate',
+    name: Events.InteractionCreate,
     async execute(interaction) {
-        if (!interaction.isCommand()) return;
-        
+        if (!interaction.isChatInputCommand()) return;
+
         const command = interaction.client.commands.get(interaction.commandName);
 
-        if (!command) return;
+        if (!command) {
+            console.error(`No command matching ${interaction.commandName} was found.`);
+            return;
+        }
 
         try {
             await command.execute(interaction);
         } catch (error) {
+            console.error(`Error executing ${interaction.commandName}`);
             console.error(error);
-
-            const errorEmbed = new MessageEmbed()
-                .setColor(interaction.client.config.colors.redColor)
-                .setAuthor({ name: 'There was an error while trying to execute this command.', iconURL: interaction.client.config.assets.avatar })
-                .setDescription(`\`\`\`- ${error.message}\`\`\``)
-                .setFooter({ text: 'Please contact aiden if you see this error message.' });
-
-            await interaction.reply({ embeds: [errorEmbed], ephemeral: true });
         }
     },
 };

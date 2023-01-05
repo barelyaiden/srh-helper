@@ -1,5 +1,4 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
+const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require('discord.js');
 const package = require('../package.json');
 
 module.exports = {
@@ -7,23 +6,23 @@ module.exports = {
         .setName('about')
         .setDescription('Get information about the bot.'),
     async execute(interaction) {
-        const row = new MessageActionRow()
+        const row = new ActionRowBuilder()
             .addComponents(
-                new MessageButton()
+                new ButtonBuilder()
                     .setCustomId('information')
                     .setLabel('Information')
-                    .setStyle('PRIMARY'),
-                new MessageButton()
+                    .setStyle(ButtonStyle.Primary),
+                new ButtonBuilder()
                     .setCustomId('github')
                     .setLabel('GitHub')
-                    .setStyle('SECONDARY'),
-                new MessageButton()
+                    .setStyle(ButtonStyle.Secondary),
+                new ButtonBuilder()
                     .setCustomId('special-thanks')
                     .setLabel('Special Thanks')
-                    .setStyle('SECONDARY'),
+                    .setStyle(ButtonStyle.Secondary),
             );
 
-        const informationEmbed = new MessageEmbed()
+        const informationEmbed = new EmbedBuilder()
             .setColor(interaction.client.config.colors.redColor)
             .setAuthor({ name: 'About SRH Helper', iconURL: interaction.client.config.assets.avatar })
             .setDescription(package.description)
@@ -34,7 +33,7 @@ module.exports = {
             )
             .setImage(interaction.client.config.assets.banner);
 
-        const gitHubEmbed = new MessageEmbed()
+        const gitHubEmbed = new EmbedBuilder()
             .setColor(interaction.client.config.colors.whiteColor)
             .setAuthor({ name: 'GitHub Repository', iconURL: interaction.client.config.assets.gitHubLogo })
             .setDescription('If you would like to contribute to the project, report bugs or share suggestions, you can do so on the **[official GitHub repository](https://github.com/barelyaiden/srh-helper)**.')
@@ -43,13 +42,11 @@ module.exports = {
         const credits = [
             '**Arsenal**',
             'For generously hosting the bot for the server.',
-            '**Devin**',
-            'For contributing to the project with a License file.',
             '**The Sonic Ripping Community**',
             'For sharing so many ripped assets for others to use for their own projects.'
         ].join('\n');
 
-        const specialThanksEmbed = new MessageEmbed()
+        const specialThanksEmbed = new EmbedBuilder()
             .setColor(interaction.client.config.colors.greenColor)
             .setAuthor({ name: 'Special Thanks', iconURL: interaction.client.config.assets.greenAvatar })
             .setDescription(credits)
@@ -59,7 +56,7 @@ module.exports = {
 
         const filter = i => i.user.id === interaction.user.id;
 
-        const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
+        const collector = interaction.channel.createMessageComponentCollector({ filter, time: 30000 });
 
         collector.on('collect', async i => {
             if (i.customId === 'information') {

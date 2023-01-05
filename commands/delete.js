@@ -1,11 +1,9 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('delete')
         .setDescription('Delete a ripped asset from the database.')
-        .setDefaultPermission(false)
         .addIntegerOption(option => 
             option.setName('entry-id')
                 .setDescription('The ID of the ripped asset entry.')
@@ -15,15 +13,14 @@ module.exports = {
 
         const row = await interaction.client.RippedAssets.findOne({ where: { id: entryId } });
 
-        const noRippedAssetEmbed = new MessageEmbed()
+        const noRippedAssetEmbed = new EmbedBuilder()
             .setColor(interaction.client.config.colors.redColor)
-            .setAuthor({ name: 'That ripped asset entry does not exist.', iconURL: interaction.client.config.assets.avatar })
-            .addField('Entry Id:', `${entryId}`);
+            .setAuthor({ name: `Ripped asset entry #${entryId} does not exist.`, iconURL: interaction.client.config.assets.avatar });
 
         if (!row) return await interaction.reply({ embeds: [noRippedAssetEmbed], ephemeral: true });
 
         if (!interaction.member.roles.cache.some(role => role.name === interaction.client.config.roles.moderationRoleName)) {
-            const noPermissionEmbed = new MessageEmbed()
+            const noPermissionEmbed = new EmbedBuilder()
                 .setColor(interaction.client.config.colors.redColor)
                 .setAuthor({ name: 'You do not have permission to delete that ripped asset entry from the database.', iconURL: interaction.client.config.assets.avatar });
 
@@ -32,10 +29,9 @@ module.exports = {
 
         await interaction.client.RippedAssets.destroy({ where: { id: entryId } });
 
-        const successEmbed = new MessageEmbed()
+        const successEmbed = new EmbedBuilder()
             .setColor(interaction.client.config.colors.redColor)
-            .setAuthor({ name: 'Successfully deleted the ripped asset from the database.', iconURL: interaction.client.config.assets.avatar })
-            .addField('Entry Id:', `${entryId}`);
+            .setAuthor({ name: `Successfully deleted ripped asset entry #${entryId} from the database.`, iconURL: interaction.client.config.assets.avatar });
 
         return await interaction.reply({ embeds: [successEmbed], ephemeral: true });
     },

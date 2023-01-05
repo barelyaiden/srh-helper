@@ -1,5 +1,4 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
+const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, EmbedBuilder, ButtonStyle } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -8,6 +7,7 @@ module.exports = {
         .addStringOption(option => 
             option.setName('game')
                 .setDescription('The game you want a ripped asset from.')
+                .setRequired(true)
                 .addChoices(
                     { name: 'Sonic R', value: 'sonic_r' },
                     { name: 'Sonic Adventure Series', value: 'sonic_adventure' },
@@ -22,17 +22,18 @@ module.exports = {
                     { name: 'Sonic Mobile Games', value: 'sonic_mobile' },
                     { name: 'Sonic Lost World', value: 'sonic_lost_world' },
                     { name: 'Sonic Forces', value: 'sonic_forces' },
+                    { name: 'Sonic Frontiers', value: 'sonic_frontiers' },
                     { name: 'Sonic and the Secret Rings', value: 'sonic_rings' },
                     { name: 'Sonic and the Black Knight', value: 'sonic_knight' },
                     { name: 'Sonic Rush Series', value: 'sonic_rush' },
                     { name: 'Sonic Riders Series', value: 'sonic_riders' },
                     { name: 'Team Sonic Racing', value: 'team_sonic_racing' },
                     { name: 'Mario & Sonic at the Olympic Games Series', value: 'olympics' },
-                )
-                .setRequired(true))
+                ))
         .addStringOption(option =>
             option.setName('category')
                 .setDescription('The category the ripped asset belongs to.')
+                .setRequired(true)
                 .addChoices(
                     { name: 'Character', value: 'character' },
                     { name: 'Boss', value: 'boss' },
@@ -43,18 +44,17 @@ module.exports = {
                     { name: 'Audio', value: 'audio' },
                     { name: 'HUD', value: 'hud' },
                     { name: 'Miscellaneous', value: 'misc' },
-                )
-                .setRequired(true)),
+                )),
     async execute(interaction) {
-        const row = new MessageActionRow()
+        const row = new ActionRowBuilder()
             .addComponents(
-                new MessageButton()
+                new ButtonBuilder()
                     .setCustomId('left')
-                    .setStyle('PRIMARY')
+                    .setStyle(ButtonStyle.Primary)
                     .setEmoji(interaction.client.config.emojis.leftArrowEmojiId),
-                new MessageButton()
+                new ButtonBuilder()
                     .setCustomId('right')
-                    .setStyle('PRIMARY')
+                    .setStyle(ButtonStyle.Primary)
                     .setEmoji(interaction.client.config.emojis.rightArrowEmojiId),
             );
 
@@ -63,7 +63,7 @@ module.exports = {
 
         const { count, rows } = await interaction.client.RippedAssets.findAndCountAll({ where: { game: game, category: category } });
 
-        const noRippedAssetsEmbed = new MessageEmbed()
+        const noRippedAssetsEmbed = new EmbedBuilder()
             .setColor(interaction.client.config.colors.redColor)
             .setAuthor({ name: 'There are no ripped assets in the database for your query.', iconURL: interaction.client.config.assets.avatar })
             .addFields(
@@ -85,12 +85,12 @@ module.exports = {
 
             setTimeout(async function() {
                 await interaction.editReply({ components: [] });
-            }, 15000);
+            }, 30000);
         }
 
         const filter = i => i.user.id === interaction.user.id;
 
-        const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
+        const collector = interaction.channel.createMessageComponentCollector({ filter, time: 30000 });
 
         collector.on('collect', async i => {
             if (i.customId === 'left') {
@@ -119,7 +119,7 @@ function generateRippedAssetsEmbed(interaction, rows, game, category) {
 
         const rippedAssets = current.map(rippedAsset => `**${rippedAsset.id}.** [${rippedAsset.name}](${rippedAsset.link})\n**By:** ${rippedAsset.author}`).join('\n');
 
-        const rippedAssetsEmbed = new MessageEmbed()
+        const rippedAssetsEmbed = new EmbedBuilder()
             .setColor(interaction.client.config.colors.redColor)
             .setAuthor({ name: 'All available ripped assets for your query.', iconURL: interaction.client.config.assets.avatar })
             .setFooter({ text: `${game} • ${category}` })
