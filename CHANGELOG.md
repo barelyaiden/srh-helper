@@ -3,6 +3,7 @@
 - Ported to Discord.js v14.
 - Added category for Sonic Frontiers.
 - Updated the /share command with new GIFs.
+- The bot is now enjoying Sonic Frontiers 24/7!
 
 ## Release 1.2.0
 
