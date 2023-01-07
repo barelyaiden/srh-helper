@@ -5,3 +5,4 @@ databases/*
 !databases/rippedAssets5-1-23.sqlite
 node_modules
 .env
+asset_links.txt

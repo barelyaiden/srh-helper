@@ -1,8 +1,12 @@
+## Release 2.0.1
+
+- Added the export command.
+
 ## Release 2.0.0
 
 - Ported to Discord.js v14.
 - Added category for Sonic Frontiers.
-- Updated the /share command with new GIFs.
+- Updated the /usage command with new GIFs.
 - The bot is now enjoying Sonic Frontiers 24/7!
 
 ## Release 1.2.0
