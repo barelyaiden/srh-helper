@@ -1,3 +1,7 @@
+## Release 2.0.2
+
+- Bot commands can no longer be used outside of the designated channel unless you're a moderator.
+
 ## Release 2.0.1
 
 - Added the export command.

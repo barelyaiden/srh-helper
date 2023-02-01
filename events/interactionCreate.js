@@ -12,6 +12,13 @@ module.exports = {
             return;
         }
 
+        if (interaction.channel.id !== interaction.client.config.channels.botCommandsChannelId) {
+            if (!interaction.member.roles.cache.some(role => role.name === interaction.client.config.roles.moderationRoleName)) {
+                await interaction.reply({ content: `You cannot use bot commands outside of <#${interaction.client.config.channels.botCommandsChannelId}>!`, ephemeral: true });
+                return;
+            }
+        }
+
         try {
             await command.execute(interaction);
         } catch (error) {
