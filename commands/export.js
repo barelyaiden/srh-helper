@@ -12,7 +12,7 @@ module.exports = {
         const { count, rows } = await interaction.client.RippedAssets.findAndCountAll();
 
         if (count > 0) {
-            rows.forEach(async row => {
+            rows.forEach(row => {
                 if (row.link !== null) links.push(row.link);
             });
         }
@@ -27,7 +27,7 @@ module.exports = {
 
         textFile.on('finish', async () => {
             const file = new AttachmentBuilder('asset_links.txt');
-            await interaction.editReply({ content: 'Here\'s your text file!', files: [file] });
+            return await interaction.editReply({ content: 'Here\'s your text file!', files: [file] });
         });
     },
 };

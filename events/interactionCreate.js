@@ -5,7 +5,7 @@ module.exports = {
     async execute(interaction) {
         if (!interaction.isChatInputCommand()) return;
 
-        const command = interaction.client.commands.get(interaction.commandName);
+        const command = await interaction.client.commands.get(interaction.commandName);
 
         if (!command) {
             console.error(`No command matching ${interaction.commandName} was found.`);
@@ -14,8 +14,7 @@ module.exports = {
 
         if (interaction.channel.id !== interaction.client.config.channels.botCommandsChannelId) {
             if (!interaction.member.roles.cache.some(role => role.name === interaction.client.config.roles.moderationRoleName)) {
-                await interaction.reply({ content: `You cannot use bot commands outside of <#${interaction.client.config.channels.botCommandsChannelId}>!`, ephemeral: true });
-                return;
+                return await interaction.reply({ content: `You cannot use bot commands outside of <#${interaction.client.config.channels.botCommandsChannelId}>!`, ephemeral: true });
             }
         }
 

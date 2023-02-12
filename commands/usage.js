@@ -14,7 +14,7 @@ module.exports = {
                     { name: 'Share', value: 'shareUsageGif' }
                 )),
     async execute(interaction) {
-        const command = interaction.options.getString('command');
+        const command = await interaction.options.getString('command');
         const file = new AttachmentBuilder(interaction.client.config.usageGifs[command]);
         return await interaction.reply({ files: [file] });
     },

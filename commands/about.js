@@ -56,7 +56,7 @@ module.exports = {
 
         const filter = i => i.user.id === interaction.user.id;
 
-        const collector = interaction.channel.createMessageComponentCollector({ filter, time: 30000 });
+        const collector = await interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
 
         collector.on('collect', async i => {
             if (i.customId === 'information') {
@@ -69,7 +69,7 @@ module.exports = {
         });
 
         setTimeout(async function() {
-            await interaction.editReply({ components: [] });
+            return await interaction.editReply({ components: [] });
         }, 15000);
     },
 };

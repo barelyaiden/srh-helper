@@ -54,10 +54,10 @@ module.exports = {
                 .setDescription('The download link of the ripped asset.')
                 .setRequired(true)),
     async execute(interaction) {
-        const game = interaction.options.getString('game');
-        const category = interaction.options.getString('category');
-        const name = interaction.options.getString('name');
-        const link = interaction.options.getString('link');
+        const game = await interaction.options.getString('game');
+        const category = await interaction.options.getString('category');
+        const name = await interaction.options.getString('name');
+        const link = await interaction.options.getString('link');
 
         const invalidDownloadLinkEmbed = new EmbedBuilder()
             .setColor(interaction.client.config.colors.redColor)

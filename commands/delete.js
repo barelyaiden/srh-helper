@@ -9,7 +9,7 @@ module.exports = {
                 .setDescription('The ID of the ripped asset entry.')
                 .setRequired(true)),
     async execute(interaction) {
-        const entryId = interaction.options.getInteger('entry-id');
+        const entryId = await interaction.options.getInteger('entry-id');
 
         const row = await interaction.client.RippedAssets.findOne({ where: { id: entryId } });
 

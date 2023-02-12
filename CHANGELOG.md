@@ -1,3 +1,8 @@
+## Release 2.0.3
+
+- Small code refactoring.
+- Attempt to fix the bot constantly crashing.
+
 ## Release 2.0.2
 
 - Bot commands can no longer be used outside of the designated channel unless you're a moderator.

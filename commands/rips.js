@@ -58,8 +58,8 @@ module.exports = {
                     .setEmoji(interaction.client.config.emojis.rightArrowEmojiId),
             );
 
-        const game = interaction.options.getString('game');
-        const category = interaction.options.getString('category');
+        const game = await interaction.options.getString('game');
+        const category = await interaction.options.getString('category');
 
         const { count, rows } = await interaction.client.RippedAssets.findAndCountAll({ where: { game: game, category: category } });
 
@@ -85,12 +85,12 @@ module.exports = {
 
             setTimeout(async function() {
                 await interaction.editReply({ components: [] });
-            }, 30000);
+            }, 15000);
         }
 
         const filter = i => i.user.id === interaction.user.id;
 
-        const collector = interaction.channel.createMessageComponentCollector({ filter, time: 30000 });
+        const collector = await interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
 
         collector.on('collect', async i => {
             if (i.customId === 'left') {
