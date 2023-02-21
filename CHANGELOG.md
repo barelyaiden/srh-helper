@@ -1,3 +1,7 @@
+## Release 2.0.4
+
+- Added an error handler for global unpromised rejections.
+
 ## Release 2.0.3
 
 - Small code refactoring.
