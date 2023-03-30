@@ -1,3 +1,7 @@
+## Release 2.0.5
+
+- Bump Discord.js to 14.8.0.
+
 ## Release 2.0.4
 
 - Added an error handler for global unpromised rejections.
