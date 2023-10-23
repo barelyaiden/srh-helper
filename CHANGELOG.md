@@ -1,3 +1,7 @@
+## Release 2.0.6
+
+- Added category for Sonic Superstars
+
 ## Release 2.0.5
 
 - Bump Discord.js to 14.8.0.

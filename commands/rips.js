@@ -9,7 +9,6 @@ module.exports = {
                 .setDescription('The game you want a ripped asset from.')
                 .setRequired(true)
                 .addChoices(
-                    { name: 'Sonic R', value: 'sonic_r' },
                     { name: 'Sonic Adventure Series', value: 'sonic_adventure' },
                     { name: 'Sonic Heroes', value: 'sonic_heroes' },
                     { name: 'Shadow The Hedgehog', value: 'shadow_05' },
@@ -23,6 +22,7 @@ module.exports = {
                     { name: 'Sonic Lost World', value: 'sonic_lost_world' },
                     { name: 'Sonic Forces', value: 'sonic_forces' },
                     { name: 'Sonic Frontiers', value: 'sonic_frontiers' },
+                    { name: 'Sonic Superstars', value: 'sonic_superstars' },
                     { name: 'Sonic and the Secret Rings', value: 'sonic_rings' },
                     { name: 'Sonic and the Black Knight', value: 'sonic_knight' },
                     { name: 'Sonic Rush Series', value: 'sonic_rush' },
