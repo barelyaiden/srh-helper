@@ -1,3 +1,7 @@
+## Release 2.0.7
+
+- Export commands now appends the rip's name before the link
+
 ## Release 2.0.6
 
 - Added category for Sonic Superstars
