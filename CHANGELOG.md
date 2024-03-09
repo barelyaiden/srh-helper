@@ -1,3 +1,8 @@
+## Release 2.0.8
+
+- Added the `/edit` command to edit pre-existing entries in the database
+- Fixed the `/delete` command from failing due to Discord changing the username structure
+
 ## Release 2.0.7
 
 - Export commands now appends the rip's name before the link

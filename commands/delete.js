@@ -19,14 +19,6 @@ module.exports = {
 
         if (!row) return await interaction.reply({ embeds: [noRippedAssetEmbed], ephemeral: true });
 
-        if (!interaction.member.roles.cache.some(role => role.name === interaction.client.config.roles.moderationRoleName)) {
-            const noPermissionEmbed = new EmbedBuilder()
-                .setColor(interaction.client.config.colors.redColor)
-                .setAuthor({ name: 'You do not have permission to delete that ripped asset entry from the database.', iconURL: interaction.client.config.assets.avatar });
-
-            if (interaction.user.tag !== row.author) return await interaction.reply({ embeds: [noPermissionEmbed], ephemeral: true });
-        }
-
         await interaction.client.RippedAssets.destroy({ where: { id: entryId } });
 
         const successEmbed = new EmbedBuilder()
