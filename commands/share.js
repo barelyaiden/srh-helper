@@ -23,6 +23,7 @@ module.exports = {
                     { name: 'Sonic Forces', value: 'sonic_forces' },
                     { name: 'Sonic Frontiers', value: 'sonic_frontiers' },
                     { name: 'Sonic Superstars', value: 'sonic_superstars' },
+                    { name: 'SONIC X SHADOW GENERATIONS', value: 'sonic_shadow_generations' },
                     { name: 'Sonic and the Secret Rings', value: 'sonic_rings' },
                     { name: 'Sonic and the Black Knight', value: 'sonic_knight' },
                     { name: 'Sonic Rush Series', value: 'sonic_rush' },

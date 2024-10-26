@@ -1,3 +1,10 @@
+## Release 2.0.9
+
+- Updated dependencies
+- Updated the README file
+- Fixed license owner name
+- Added "SONIC X SHADOW GENERATIONS" to the `/rips` and `/share` commands
+
 ## Release 2.0.8
 
 - Added the `/edit` command to edit pre-existing entries in the database
