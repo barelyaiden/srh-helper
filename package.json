@@ -1,6 +1,6 @@
 {
   "name": "srh-helper",
-  "version": "2.0.9",
+  "version": "2.1.0",
   "description": "A Discord bot designed to help ease the process of sharing ripped assets in the Sonic Ripping Hub Discord server.",
   "main": "index.js",
   "scripts": {
@@ -30,6 +30,8 @@
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
-    "eslint": "^9.13.0"
+    "@eslint/js": "^9.14.0",
+    "eslint": "^9.14.0",
+    "globals": "^15.11.0"
   }
 }

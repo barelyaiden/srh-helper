@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require('discord.js');
-const package = require('../package.json');
+const package = require('../../package.json');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -69,7 +69,7 @@ module.exports = {
         });
 
         setTimeout(async function() {
-            return await interaction.editReply({ components: [] });
+            await interaction.editReply({ components: [] });
         }, 15000);
     },
 };

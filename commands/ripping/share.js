@@ -84,6 +84,6 @@ module.exports = {
                 { name: 'Link:', value: link },
             );
 
-        return await interaction.reply({ embeds: [successEmbed] });
+        await interaction.reply({ embeds: [successEmbed] });
     },
 };

@@ -5,17 +5,14 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('export')
         .setDescription('Export a .txt file of all the download links in the database.')
-        .addStringOption(option => 
+        .addBooleanOption(option => 
             option.setName('cdn-filter')
                 .setDescription('Whether to filter Discord CDN links.')
-                .setRequired(false)
-                .addChoices(
-                    { name: 'Enabled', value: 'enabled' },
-                )),
+                .setRequired(true)),
     async execute(interaction) {
         await interaction.deferReply();
 
-        const cdnFilter = await interaction.options.getString('cdn-filter');
+        const cdnFilter = await interaction.options.getBoolean('cdn-filter');
 
         let links = [];
         const { count, rows } = await interaction.client.RippedAssets.findAndCountAll();
@@ -23,7 +20,7 @@ module.exports = {
         if (count > 0) {
             rows.forEach(row => {
                 if (row.link !== null) {
-                    if (cdnFilter === 'enabled') {
+                    if (cdnFilter) {
                         if (row.link.startsWith('https://cdn.discordapp.com/')) links.push(`${row.name} / ${row.game} / ${row.category} / ${row.author}\n${row.link}`);
                     } else {
                         links.push(`${row.name} / ${row.game} / ${row.category} / ${row.author}\n${row.link}`);
@@ -42,7 +39,7 @@ module.exports = {
 
         textFile.on('finish', async () => {
             const file = new AttachmentBuilder('asset_links.txt');
-            return await interaction.editReply({ content: 'Here\'s your text file!', files: [file] });
+            await interaction.editReply({ content: 'Here\'s your text file!', files: [file] });
         });
     },
 };

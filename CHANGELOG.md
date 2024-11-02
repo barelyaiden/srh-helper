@@ -1,3 +1,11 @@
+## Release 2.1.0
+
+- Updated a majority of the code
+- Removed the `/usage` command
+- The buttons for the `/rips` command embed now dynamically disable and enable themselves based on which page you're on
+- Fixed the license file's year date
+- Updated the ESLint config file
+
 ## Release 2.0.9
 
 - Updated dependencies

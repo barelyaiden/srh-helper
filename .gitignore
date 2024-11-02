@@ -1,11 +1,4 @@
-databases/*
-!databases/rippedAssets30-8-21.sqlite
-!databases/rippedAssets12-11-21.sqlite
-!databases/rippedAssets8-4-22.sqlite
-!databases/rippedAssets5-1-23.sqlite
-!databases/rippedAssets12-2-23.sqlite
-!databases/rippedAssets23-10-23.sqlite
-!databases/rippedAssets26-10-24.sqlite
+databases/rippedAssets.sqlite
 node_modules
 .env
 asset_links.txt

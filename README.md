@@ -8,7 +8,6 @@ If you would like to join any of the servers associated with the project, Discor
 
 # Additional Information
 
-- This bot is written in `Discord.js 14` and requires `Node.js 20` or higher to run as per `Discord.js 14` requirements.
 - This bot is designed for the `Sonic Ripping Hub` Discord server and is not meant to work on other servers.
 - Your test bot account must have all privileged gateway intents enabled to function properly.
 - You must invite your test bot account to your testing server with the `bot` and `applications.commands` scopes and the `Administrator` permission via OAuth2.

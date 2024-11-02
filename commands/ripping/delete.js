@@ -10,7 +10,6 @@ module.exports = {
                 .setRequired(true)),
     async execute(interaction) {
         const entryId = await interaction.options.getInteger('entry-id');
-
         const row = await interaction.client.RippedAssets.findOne({ where: { id: entryId } });
 
         const noRippedAssetEmbed = new EmbedBuilder()
@@ -25,6 +24,6 @@ module.exports = {
             .setColor(interaction.client.config.colors.redColor)
             .setAuthor({ name: `Successfully deleted ripped asset entry #${entryId} from the database.`, iconURL: interaction.client.config.assets.avatar });
 
-        return await interaction.reply({ embeds: [successEmbed], ephemeral: true });
+        await interaction.reply({ embeds: [successEmbed], ephemeral: true });
     },
 };
